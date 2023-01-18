@@ -7,9 +7,6 @@ namespace DBCodeFirst.Offices
         public int OfficeId { get; set; }
         public string Title { get; set; }
         public string Location { get; set; }
-        public  virtual List<Employee> Employees
-        {
-            get; set;
-        }
+        public virtual List<Employee> Employees { get; set; }
     }
 }

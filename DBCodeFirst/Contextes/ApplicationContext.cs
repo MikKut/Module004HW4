@@ -5,26 +5,24 @@ using DBCodeFirst.Offices;
 using DBCodeFirst.Projects;
 using DBCodeFirst.Titles;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System.Reflection.Emit;
 
 namespace DBCodeFirst.Contextes
 {
     internal class ApplicationContext : DbContext
     {
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Client> Clients { get; set; }
-        public DbSet<Project> Projects { get; set; }
-        public DbSet<EmployeeProject> EmployeeProjects { get; set; }
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-
         }
 
         public ApplicationContext()
         {
         }
+
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<EmployeeProject> EmployeeProjects { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -42,18 +40,20 @@ namespace DBCodeFirst.Contextes
             modelBuilder.ApplyConfiguration(new Projects.ProjectConfiguration());
             modelBuilder.ApplyConfiguration(new Titles.TitleConfiguration());
             modelBuilder.ApplyConfiguration(new Clients.ClientConfiguration());
-            //SeedData(modelBuilder);
+
+            // SeedData(modelBuilder);
         }
+
         private static void SeedData(ModelBuilder modelBuilder)
         {
             var office = new Office() { Location = "New York", Title = "MMM", OfficeId = 1 };
             var title = new Title() { Name = "T", TitleId = 1 };
             var emp1 = new DBCodeFirst.Employees.Employee() { LastName = "Crumn", HiredDate = DateTime.Now, FirstName = "Slavick", TitleId = title.TitleId, OfficeId = office.OfficeId, EmployeeId = 1 };
-            var ep1 = new EmployeeProject() {  EmployeeId = emp1.EmployeeId, EmployeeProjectId = 1, ProjectId = 1 };
-            var ep2 = new EmployeeProject() {  EmployeeId = emp1.EmployeeId, EmployeeProjectId = 2, ProjectId = 2 };
-            var ep3 = new EmployeeProject() {  EmployeeId = emp1.EmployeeId, EmployeeProjectId = 3, ProjectId = 3 };
-            var ep4 = new EmployeeProject() {  EmployeeId = emp1.EmployeeId, EmployeeProjectId = 4, ProjectId = 4 };
-            var ep5 = new EmployeeProject() {  EmployeeId = emp1.EmployeeId, EmployeeProjectId = 5, ProjectId = 5 };
+            var ep1 = new EmployeeProject() { EmployeeId = emp1.EmployeeId, EmployeeProjectId = 1, ProjectId = 1 };
+            var ep2 = new EmployeeProject() { EmployeeId = emp1.EmployeeId, EmployeeProjectId = 2, ProjectId = 2 };
+            var ep3 = new EmployeeProject() { EmployeeId = emp1.EmployeeId, EmployeeProjectId = 3, ProjectId = 3 };
+            var ep4 = new EmployeeProject() { EmployeeId = emp1.EmployeeId, EmployeeProjectId = 4, ProjectId = 4 };
+            var ep5 = new EmployeeProject() { EmployeeId = emp1.EmployeeId, EmployeeProjectId = 5, ProjectId = 5 };
 
             var cl1 = new Client() { Caracteristic = "He is A", ClientId = 1, DateOfBirth = DateTime.Now, FirstName = "A", LastName = "B" };
             var cl2 = new Client() { Caracteristic = "He is B", ClientId = 2, DateOfBirth = DateTime.Now, FirstName = "B", LastName = "B" };

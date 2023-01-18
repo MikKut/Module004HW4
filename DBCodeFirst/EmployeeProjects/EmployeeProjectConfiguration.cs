@@ -2,12 +2,6 @@
 using DBCodeFirst.Projects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DBCodeFirst.EmployeeProjects
 {
@@ -16,7 +10,7 @@ namespace DBCodeFirst.EmployeeProjects
         public void Configure(EntityTypeBuilder<EmployeeProject> builder)
         {
             ConfiureColumns(builder);
-            ConfigureRelations(builder);  
+            ConfigureRelations(builder);
         }
 
         private void ConfiureColumns(EntityTypeBuilder<EmployeeProject> builder)

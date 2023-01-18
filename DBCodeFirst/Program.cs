@@ -14,6 +14,7 @@ using (var db = new DBCodeFirst.Contextes.ApplicationContext())
     {
         Console.WriteLine(t.ToString());
     }
+
     Console.WriteLine();
 
     var x1 = Starter.GetDifferenceTodayAndHiredDay(db, 1);
